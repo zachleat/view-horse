@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		"@11ty/is-land": "^4.0.0",
-		"@zachleat/browser-window": "^1.0.13",
+		"@zachleat/browser-window": "^1.0.14",
 		"@zachleat/pagefind-search": "^1.0.2"
 	},
 	"devDependencies": {
