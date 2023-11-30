@@ -28,7 +28,7 @@ collections_config:
     filter:
       base: strict
     name: Posts
-    description: 'Microblog post entries.'
+    description: 'Post entries.'
     icon: notes
     singular_name:
     _editables: {}

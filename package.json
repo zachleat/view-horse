@@ -1,12 +1,12 @@
 {
-	"name": "microblog",
+	"name": "@zachleat/view-horse",
 	"version": "1.0.0",
 	"private": true,
 	"license": "MIT",
 	"scripts": {
 		"build:style": "bookshop-sass --bookshop _component-library --output _site/public/bookshop.css",
 		"dev:style": "bookshop-sass --bookshop _component-library --output _site/public/bookshop.css --watch",
-		"dev:content": "npx @11ty/eleventy --serve --quiet",
+		"dev:content": "npx @11ty/eleventy --serve",
 		"start": "run-p dev:*",
 		"search-index": "npx -y pagefind --site _site"
 	},

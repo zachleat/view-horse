@@ -4,10 +4,10 @@ module.exports = {
 	eleventyComputed: {
 		metadata: {
 			title: function (data) {
-				return `Microblog → ${this.readableDate(data.created_date)}`;
+				return `view-horse:🐴 → ${this.readableDate(data.created_date)}`;
 			},
 			titleHtml: function (data) {
-				return `<a href="/">Microblog</a> → ${this.readableDate(data.created_date)}`;
+				return `<a href="/">view-horse:🐴</a> → ${this.readableDate(data.created_date)}`;
 			},
 		}
 	}
