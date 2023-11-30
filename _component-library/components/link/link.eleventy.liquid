@@ -1,22 +1,28 @@
 <script src="/public/browser-window.js" type="module"></script>
 <div class="c-link">
 	{%- if url and url != "" %}
+		{%- assign hasValidUrl = url | isValidUrl %}
+		{%- if previewType == "none" %}
+		<browser-window mode="{{ browserWindowMode | downcase }}" shadow>
+			<a href="{{ url }}" class="c-link-text">{% if hasValidUrl %}<img src="https://v1.indieweb-avatar.11ty.dev/{{ url | url_encode }}/" alt="Avatar for {{ url }}" width="32" height="32" loading="lazy" decoding="async" class="c-link-avatar">{% endif %}{{ url | displayUrl }}</a>
+		</browser-window>
+		{%- else %}
 		<is-land on:visible>
-			{%- assign hasValidUrl = url | isValidUrl %}
 			<browser-window mode="{{ browserWindowMode | downcase }}" url="{{ url }}"{% if hasValidUrl %} icon{% endif %} shadow flush>
 				{% if hasValidUrl %}
 					<a href="{{ url }}">
 						{%- if previewType == "screenshot" %}
-						<img src="https://v1.screenshot.11ty.dev/{{ url | url_encode }}/opengraph/" alt="Screenshot of {{ url }}" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630">
+						<img src="https://v1.screenshot.11ty.dev/{{ url | url_encode }}/opengraph/" alt="Screenshot of {{ url }}" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="c-link-img">
 						{%- elsif previewType == "opengraph" %}
-						<img src="https://v1.opengraph.11ty.dev/{{ url | url_encode }}/opengraph/" alt="Open Graph image for {{ url }}" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630">
+						<img src="https://v1.opengraph.11ty.dev/{{ url | url_encode }}/opengraph/" alt="Open Graph image for {{ url }}" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="630" class="c-link-img">
 						{%- endif %}
 					</a>
 				{%- else %}
-					<div class="c-link-empty"></div>
+					<div class="c-link-empty c-link-img"></div>
 				{%- endif %}
 			</browser-window>
 		</is-land>
+		{%- endif %}
 	{%- endif %}
 	{%- if content %}
 		<div class="c-link-c">{{ content }}</div>

@@ -6,6 +6,8 @@ const pluginBookshop = require("@bookshop/eleventy-bookshop");
 const Image = require("@11ty/eleventy-img");
 const { pairedShortcode: syntaxHighlight } = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const { filter: isValidUrl } = require("./_component-library/bookshop/valid_url.js");
+const { filter: displayUrl } = require("./_component-library/bookshop/display_url.js");
 
 module.exports = function (eleventyConfig) {
 	/* Bookshop */
@@ -51,14 +53,8 @@ module.exports = function (eleventyConfig) {
 	});
 
 	/* Urls */
-	eleventyConfig.addFilter("isValidUrl", (url) => {
-		try {
-			new URL(url);
-			return true;
-		} catch(e) {
-			return false;
-		}
-	});
+	eleventyConfig.addFilter("isValidUrl", isValidUrl);
+	eleventyConfig.addFilter("displayUrl", displayUrl);
 
 	/* Dates */
 	function readableDate(dateObj, format) {

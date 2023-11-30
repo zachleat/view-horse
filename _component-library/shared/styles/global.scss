@@ -7,6 +7,10 @@
 	}
 }
 
+a:where([href]) {
+	color: inherit;
+}
+
 .c-microblog {
 	margin: 0 auto;
 	max-width: 37.5rem; /* 600px /16 */
@@ -72,6 +76,7 @@
 	justify-content: flex-end;
 }
 .c-tags ul {
+	list-style: "";
 	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
