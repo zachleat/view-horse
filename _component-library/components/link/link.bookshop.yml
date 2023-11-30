@@ -13,7 +13,8 @@ blueprint:
   previewType: screenshot
   content: ""
   browserWindowMode: System
-  browserWindowBackgroundOverride: ""
+  browserWindowBackgroundColor: ""
+  browserWindowTextColor: ""
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -35,5 +36,7 @@ _inputs:
         - System
         - Light
         - Dark
-  browserWindowBackgroundOverride:
+  browserWindowBackgroundColor:
+    type: color
+  browserWindowTextColor:
     type: color

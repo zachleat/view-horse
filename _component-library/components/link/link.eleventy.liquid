@@ -3,14 +3,21 @@
 	{%- if url and url != "" %}
 		{%- assign hasValidUrl = url | isValidUrl %}
 		{%- if previewType == "none" %}
-		<browser-window mode="{{ browserWindowMode | downcase }}" shadow>
+		<browser-window mode="{{ browserWindowMode | downcase }}" shadow
+			style="
+				{%- if browserWindowBackgroundColor != "" %}--bw-background: {{ browserWindowBackgroundColor }};{% endif %}
+				{%- if browserWindowTextColor != "" %}--bw-foreground: {{ browserWindowTextColor }};{% endif %}
+			">
 			<a href="{{ url }}" class="c-link-text">{% if hasValidUrl %}<img src="https://v1.indieweb-avatar.11ty.dev/{{ url | url_encode }}/" alt="Avatar for {{ url }}" width="32" height="32" loading="lazy" decoding="async" class="c-link-avatar">{% endif %}{{ url | displayUrl }}</a>
 		</browser-window>
 		{%- else %}
 		<is-land on:visible>
 			<browser-window mode="{{ browserWindowMode | downcase }}" url="{{ url }}" shadow flush
 				{%- if hasValidUrl %} icon{% endif %}
-				{%- if browserWindowBackgroundOverride %} style="--bw-background: {{ browserWindowBackgroundOverride }};"{% endif %}>
+				style="
+					{%- if browserWindowBackgroundColor != "" %}--bw-background: {{ browserWindowBackgroundColor }};{% endif %}
+					{%- if browserWindowTextColor != "" %}--bw-foreground: {{ browserWindowTextColor }};{% endif %}
+				">
 				{% if hasValidUrl %}
 					<a href="{{ url }}">
 						{%- if previewType == "screenshot" %}
