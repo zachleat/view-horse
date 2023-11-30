@@ -22,7 +22,7 @@ collections_config:
     path: posts
     create:
       extra_data:
-        filename: '{created_date|year}-{created_date|month}-{created_date|day}-{slug}'
+        filename: '{created_date|year}-{created_date|month}-{created_date|day}'
       path: "[relative_base_path]/{filename}.md"
     output: true
     filter:
