@@ -8,7 +8,9 @@
 		</browser-window>
 		{%- else %}
 		<is-land on:visible>
-			<browser-window mode="{{ browserWindowMode | downcase }}" url="{{ url }}"{% if hasValidUrl %} icon{% endif %} shadow flush>
+			<browser-window mode="{{ browserWindowMode | downcase }}" url="{{ url }}" shadow flush
+				{%- if hasValidUrl %} icon{% endif %}
+				{%- if browserWindowBackgroundOverride %} style="--bw-background: {{ browserWindowBackgroundOverride }};"{% endif %}>
 				{% if hasValidUrl %}
 					<a href="{{ url }}">
 						{%- if previewType == "screenshot" %}
